@@ -7,7 +7,6 @@ import javax.ws.rs.core.MediaType;
 
 @Path("/v1/message")
 public class testMessages {
-
 	@GET
 	@Path("/status")
 	@Produces(MediaType.TEXT_PLAIN)
