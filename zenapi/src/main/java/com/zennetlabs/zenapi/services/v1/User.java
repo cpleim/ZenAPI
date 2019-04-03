@@ -1,4 +1,4 @@
-package com.zennetlabs.zenapi;
+package com.zennetlabs.zenapi.services.v1;
 
 import java.io.Serializable;
 
@@ -7,20 +7,20 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "user")
 public class User implements Serializable {
-	
+
 	/**
 	 * 
 	 */
-	
+
 	private static final long serialVersionUID = 1L;
 
 	@XmlElement(name = "id")
 	private String id;
-	
+
 	@XmlElement(name = "name")
 	private String name;
 
-	//Getters and Setters
+	// Getters and Setters
 	public String getId() {
 		return id;
 	}
@@ -36,6 +36,5 @@ public class User implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	
+
 }
