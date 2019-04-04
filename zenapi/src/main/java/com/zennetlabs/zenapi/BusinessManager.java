@@ -38,7 +38,21 @@ public class BusinessManager {
 		users.add(user1);
 		users.add(user1);
 		return users;
+	}
 
+	public User addUser(User user) {
+		user.setId("1111");
+		return null;
+	}
+
+	public User updateUserAttribute(String userId, String attribute, String value) {
+
+		User user = new User();
+		user.setId(userId);
+		if (attribute.equals("name")) {
+			user.setName(value);
+		}
+		return user;
 	}
 
 }

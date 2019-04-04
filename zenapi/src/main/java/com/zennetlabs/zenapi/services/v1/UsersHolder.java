@@ -12,7 +12,7 @@ public class UsersHolder implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@XmlElement(name = "id")
+	@XmlElement(name = "users")
 	private List<User> users;
 
 	// Getters and Setters
