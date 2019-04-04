@@ -3,6 +3,7 @@ package com.zennetlabs.zenapi.services.v1;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -103,6 +104,21 @@ public class UsersResource {
 		try {
 			User updatedUser = BusinessManager.getInstance().updateUserAttribute(userId, "name", name);
 			return Response.status(Response.Status.OK).entity(updatedUser).build();
+		} catch (Exception e) {
+
+		}
+		return Response.status(Response.Status.BAD_REQUEST)
+				.entity("{\"error\":\"Could not update user.\", \"status\":\"FAIL\"}").build();
+	}
+
+	@DELETE
+	@Path("/{userId}")
+	@Consumes({ MediaType.APPLICATION_JSON })
+	@Produces({ MediaType.APPLICATION_JSON })
+	public Response deleteUser(@PathParam("userId") String userId) {
+		try {
+			BusinessManager.getInstance().deleteUser(userId);
+			return Response.status(Response.Status.OK).entity("{}").build();
 		} catch (Exception e) {
 
 		}

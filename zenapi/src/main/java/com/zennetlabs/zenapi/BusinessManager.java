@@ -54,5 +54,10 @@ public class BusinessManager {
 		}
 		return user;
 	}
+	
+	public void deleteUser(String userId) {
+		
+		return;
+	}
 
 }
