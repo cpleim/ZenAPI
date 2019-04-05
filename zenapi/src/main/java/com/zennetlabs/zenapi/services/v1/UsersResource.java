@@ -27,7 +27,7 @@ public class UsersResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getUserByID(@PathParam("userId") String userId) {
 
-		System.out.print("[DEBUG INFO] UsersResource::getUserByID -> Routine Started. userId =" + userId + "\n");
+		System.out.print("[DEBUG INFO] UsersResource::getUserByID -> Routine Started. userId = " + userId + "\n");
 		if (userId == null) {
 			return Response.status(Response.Status.BAD_REQUEST)
 					.entity("{\"error\":\"Not Authoized. The param userId cannot be empty\", \"status\":\"FAIL\"}")

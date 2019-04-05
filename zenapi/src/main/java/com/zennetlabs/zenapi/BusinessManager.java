@@ -18,16 +18,19 @@ public class BusinessManager {
 
 	}
 
-	public User findUsers(String userId) {
+	public User findUsers(String userId) throws Exception{
 		System.out.print("[DEBUG INFO] BusinessManager::findUser -> Routine Started\n");
-		User user = new User();
-		user.setId("0001");
-		user.setName("Juan Perez");
+		
+		User user = DataManager.getIsntance().findUserById(userId);
+		
+		if(user == null) {
+			throw new Exception("Nothing Found...");
+		}
 		return user;
 	}
 
 	public List<User> findUsers() {
-		// This is some wacki way to add users...
+		// This is some whacki way to add users...
 		List<User> users = new ArrayList<User>();
 		User user1 = new User();
 		user1.setId("0002");
@@ -41,12 +44,12 @@ public class BusinessManager {
 	}
 
 	public User addUser(User user) {
-		user.setId("1111");
-		return null;
+		// Add to database
+		User newUser = DataManager.getIsntance().insertUser(user);
+		return newUser;
 	}
 
 	public User updateUserAttribute(String userId, String attribute, String value) {
-
 		User user = new User();
 		user.setId(userId);
 		if (attribute.equals("name")) {
@@ -54,9 +57,9 @@ public class BusinessManager {
 		}
 		return user;
 	}
-	
+
 	public void deleteUser(String userId) {
-		
+
 		return;
 	}
 
