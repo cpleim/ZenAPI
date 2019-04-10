@@ -1,10 +1,14 @@
 package com.zennetlabs.zenapi;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bson.types.ObjectId;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
+import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.ServerAddress;
@@ -81,6 +85,38 @@ public class DataManager {
 			System.out.print("[ERROR] -> DataManager::findUserById Exception: \n" + e);
 		}
 		return null;
+	}
+
+	// Find all users
+	public List<User> findAllUsers() {
+		List<User> users = new ArrayList<User>();
+		try {
+			DBCursor cursor = userCollection.find();
+			if (cursor != null) {
+				while (cursor.hasNext()) {
+					BasicDBObject doc = (BasicDBObject) cursor.next();
+					User item = mapUserFromDBObject(doc);
+					users.add(item);
+				}
+				return users;
+			}
+			return null;
+		} catch (Exception e) {
+
+		}
+		return null;
+
+	}
+
+	//Update user attributes
+	public User updateUserAttribute(String userId, String attribute, String value) {
+		String updateValue = value;
+		BasicDBObject doc = new BasicDBObject();
+		doc.append("$set", new BasicDBObject().append(attribute, updateValue));
+		DBObject searchById = new BasicDBObject("_id", new ObjectId(userId));
+		userCollection.update(searchById, doc);
+		return findUserById(userId);
+
 	}
 
 }
