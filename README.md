@@ -8,7 +8,6 @@ This API provides access to data stored in the ***MongoDB NoSQL*** database.
 
 
 ## Technologies used
-
  - Main language: **Java (jdk 1.7.0_79)** 
  - RESTful Client: **Jersey 2.19** 
  - HTTP Server: **Apache Tomcat v8.5.39** 
